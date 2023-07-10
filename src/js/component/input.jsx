@@ -33,7 +33,7 @@ const Input = () => {
                 <ul>
                     {toDo.map((item, index) => {
                         return (
-                            <div key={index}className="d-flex justify-content-between">
+                            <div key={index}className="d-flex justify-content-between item">
                                 <li  className="confortaa" key={index}>{item}</li>
                                 <i className="fa-regular fa-trash-can trash"
                                     onClick={(event) => {
