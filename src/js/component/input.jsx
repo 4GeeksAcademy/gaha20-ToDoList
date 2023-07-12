@@ -1,34 +1,33 @@
 import React, {useState} from "react";
+import TestInput from "./testInput.jsx";
 
 const Input = () => {
     const [data, setData] = useState("")
     const [toDo, setToDo] = useState([])
     const toDoCounter = toDo.length
+
+    const handleChange = (event) => {console.log(data)
+    setData(event.target.value)
+    }
+    const handleKeyDown = (event) => {
+        console.log(event.key)
+        if (event.key == "Enter" && data.length != ""){
+            setData("")
+            setToDo((prev) => {
+                return [...prev , data];
+            })
+        }
+    }
     return (
         <div className="container justify-content-center align-items-center vh-100 vw-50">
             <h1 className="text-light confortaa">2Do´s</h1>
-            <label htmlFor="toDo" className="text-light confortaa p-1"></label>
-            <input
-            className="bg-secondary text-light confortaa"
-            type="text"
-            id="toDo"
-            placeholder="what needs to be done?"
-            value={data}
-            onChange={(event) => {
-                console.log(data)
-                setData(event.target.value)
-                }
-            }
-            onKeyDown={(event) => {
-                console.log(event.key)
-                if (event.key == "Enter"){
-                    setData("")
-                    setToDo((prev) => {
-                        return [...prev , data];
-                    })
-                }
-            }}
-            />
+{/*input start*/}
+            <TestInput 
+            data={data} 
+            handleChange={handleChange} 
+            handleKeyDown={handleKeyDown}
+            /> 
+{/*input end*/}
             <div className="container text-light container task">
                 <ul>
                     {toDo.map((item, index) => {
