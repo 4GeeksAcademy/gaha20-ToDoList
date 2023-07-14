@@ -11,7 +11,7 @@ const Input = () => {
     }
     const handleKeyDown = (event) => {
         console.log(event.key)
-        if (event.key == "Enter" && data.length != ""){
+        if (event.key == "Enter" && data.trim() != ''){
             setData("")
             setToDo((prev) => {
                 return [...prev , data];
